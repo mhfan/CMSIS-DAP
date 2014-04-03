@@ -60,6 +60,8 @@
 #   define WANTED_SIZE_IN_KB                        (512)
 #elif defined(DBG_LPC11U68)
 #   define WANTED_SIZE_IN_KB                        (256)
+#elif defined(DBG_NRF51822)
+#   define WANTED_SIZE_IN_KB                        (176)
 #endif
 
 //------------------------------------------------------------------- CONSTANTS
@@ -569,7 +571,7 @@ static void initDisconnect(uint8_t success) {
     main_blink_msd_led(0);
     init(1);
     isr_evt_set(MSC_TIMEOUT_STOP_EVENT, msc_valid_file_timeout_task_id);
-    if (!autorst)
+    if (!autorst)	// XXX:
     {
         // event to disconnect the usb
         main_usb_disconnect_event();
